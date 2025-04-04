@@ -5,7 +5,6 @@ describe('CheckIrelandLink',()=>{
       Cypress.on('uncaught:exception', () => { return false })
       homepage.loadHomepage();
       homepage.acceptCookies();
-      homepage.openBurgerMenue();
       homepage.clickGlobalLinksButton();
       homepage.clickIrelandLink();
       homepage.acceptCountriesCookies();

@@ -6,7 +6,6 @@ describe('CheckUSALink',()=>{
       homepage.changeViewPort();
       homepage.loadHomepage();
       homepage.acceptCookies();
-      homepage.openBurgerMenue();
       homepage.clickGlobalLinksButton();
       homepage.clickUnitedStatesLink();
       homepage.acceptCountriesCookies();

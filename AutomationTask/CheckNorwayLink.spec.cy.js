@@ -5,7 +5,6 @@ describe('CheckNorwayLink',()=>{
       Cypress.on('uncaught:exception', () => { return false })
       homepage.loadHomepage();
       homepage.acceptCookies();
-      homepage.openBurgerMenue();
       homepage.clickGlobalLinksButton();
       homepage.clickNorwayLink();
       homepage.acceptCountriesCookies();

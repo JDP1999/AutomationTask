@@ -6,7 +6,6 @@ describe('CheckFinnlandLink', () => {
       Cypress.on('uncaught:exception', () => { return false })
       homepage.loadHomepage();
       homepage.acceptCookies();
-      homepage.openBurgerMenue();
       homepage.clickGlobalLinksButton();
       homepage.clickFinnlandLink();
       homepage.acceptCountriesCookies();

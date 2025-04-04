@@ -5,7 +5,6 @@ describe('CheckSwedenLink',()=>{
       Cypress.on('uncaught:exception', () => { return false })
       homepage.loadHomepage();
       homepage.acceptCookies();
-      homepage.openBurgerMenue();
       homepage.clickGlobalLinksButton();
       homepage.clickSwedenLink();
       homepage.acceptCountriesCookies();

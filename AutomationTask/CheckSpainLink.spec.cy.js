@@ -5,7 +5,6 @@ describe('CheckSpainLink',()=>{
       Cypress.on('uncaught:exception', () => { return false })
       homepage.loadHomepage();
       homepage.acceptCookies();
-      homepage.openBurgerMenue();
       homepage.clickGlobalLinksButton();
       homepage.clickSpainLink();
       homepage.acceptCountriesCookies();

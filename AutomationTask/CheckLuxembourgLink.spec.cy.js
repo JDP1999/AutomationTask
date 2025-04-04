@@ -5,7 +5,6 @@ describe('CheckLuxembourgLink',()=>{
       Cypress.on('uncaught:exception', () => { return false })
       homepage.loadHomepage();
       homepage.acceptCookies();
-      homepage.openBurgerMenue();
       homepage.clickGlobalLinksButton();
       homepage.clickLuxembourgLink();
       homepage.acceptCountriesCookies();

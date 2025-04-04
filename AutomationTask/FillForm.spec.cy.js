@@ -6,7 +6,6 @@ describe('FillForm', () => {
       const contactpage = new ContactPage();
       homepage.loadHomepage();
       homepage.acceptCookies();
-      homepage.openBurgerMenue();
       homepage.clickContactUsButton();
       contactpage.enterFirstname();
       contactpage.enterLastname();

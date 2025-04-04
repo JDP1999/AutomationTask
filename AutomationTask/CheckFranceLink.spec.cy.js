@@ -5,7 +5,6 @@ describe('CheckFranceLink', () => {
       Cypress.on('uncaught:exception', () => { return false })
       homepage.loadHomepage();
       homepage.acceptCookies();
-      homepage.openBurgerMenue();
       homepage.clickGlobalLinksButton();
       homepage.clickFranceLink();
       homepage.acceptCountriesCookies();
