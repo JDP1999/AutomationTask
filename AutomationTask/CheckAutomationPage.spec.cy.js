@@ -1,3 +1,4 @@
+import "cypress-real-events/support";
 import Homepage from '../Pagebobjects/Homepage'
 import Servicespage from '../Pagebobjects/Servicespage'
 import EndToEndSolutionsPage from '../Pagebobjects/EndToEndSolutionsPage'
@@ -8,6 +9,7 @@ describe('CheckAutomationPage', () => {
     const endtoendsolutionspage = new EndToEndSolutionsPage();
     homepage.loadHomepage();
     homepage.acceptCookies();
+    homepage.hoverServicesButton();
     homepage.clickServicesButton();
     servicespage.clickEndtoEndSolutionsButton();
     endtoendsolutionspage.clickAutomation();

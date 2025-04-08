@@ -1,3 +1,4 @@
+import "cypress-real-events/support";
 import Homepage from '../Pagebobjects/Homepage'
 import ContactPage from '../Pagebobjects/ContactPage'
 describe('FillForm', () => {
@@ -12,5 +13,6 @@ describe('FillForm', () => {
       contactpage.enterEmail();
       contactpage.enterMobilenumber();
       contactpage.enterMessage();
+      contactpage.handleSlider();
     })
   })

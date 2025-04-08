@@ -1,3 +1,4 @@
+import "cypress-real-events/support";
 class ContactPage {
     enterFirstname() {
         //Initzialize variable for firstname
@@ -89,6 +90,20 @@ class ContactPage {
 
         //Type the value for message into the field
         cy.get('textarea[placeholder="Your Message"]').type('Test Message', { force: true })
+    }
+    handleSlider(){
+        //Check if slider exists
+        cy.get('div[id="slider"]').should('exist')
+
+        //Check if slider is visible
+        cy.get('div[id="slider"]').should('be.visible')
+
+        //Slide to the left
+        cy.get('div[id="slider"]').realMouseDown().realMouseMove(280,0).realMouseUp()
+
+        //Check Error Message displayed
+        cy.get('.mf_form__errors').should('be.visible')
+        
     }
 
 }

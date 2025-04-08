@@ -1,7 +1,8 @@
+import "cypress-real-events/support";
 class Homepage {
     loadHomepage(){
         //Adjust the viewport
-        cy.viewport(1300, 1200)
+        cy.viewport(1300, 3500)
 
         //Call the Sogeti Side
         cy.visit('https://www.sogeti.com/')
@@ -21,8 +22,25 @@ class Homepage {
 
         cy.wait(4000)
     }
-    clickServicesButton(){
 
+    hoverServicesButton(){
+        //Check that the Services Button exists
+        cy.get('nav[class="header-nav"]>ul>li>a[href*="services"]').should('exist')
+
+        //Check that the Services Button is visible
+        cy.get('nav[class="header-nav"]>ul>li>a[href*="services"]').should('be.visible')
+
+        //Check class before hover
+        cy.get('nav[class="header-nav"]>ul>li[aria-label="Services Submenu"]').should('have.class','t1-menu-li')
+
+        //Hover over Services Button
+        cy.get('nav[class="header-nav"]>ul>li>a[href*="services"]').realHover('mouse')
+        
+        //Check class after hover
+        cy.get('nav[class="header-nav"]>ul>li[aria-label="Services Submenu"]').should('have.class','t1-menu-li active')
+    }
+
+    clickServicesButton(){
         //Check that the Services Button exists
         cy.get('nav[class="header-nav"]>ul>li>a[href*="services"]').should('exist')
 
