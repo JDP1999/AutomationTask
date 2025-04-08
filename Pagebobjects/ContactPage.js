@@ -16,6 +16,8 @@ class ContactPage {
             //Check if first name is visible
             cy.get('input[placeholder="First name"]').should('be.visible')
 
+            cy.get('input[placeholder="First name"]').scrollIntoView()
+
             //Type the value for first name into the field
             cy.get('input[placeholder="First name"]').type(firstname, { force: true })
         })
@@ -84,6 +86,7 @@ class ContactPage {
 
         //Check if message exists
         cy.get('textarea[placeholder="Your Message"]').should('exist')
+
 
         //Check if message field is visible
         cy.get('textarea[placeholder="Your Message"]').should('be.visible')

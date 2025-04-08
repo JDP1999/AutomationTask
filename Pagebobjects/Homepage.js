@@ -2,7 +2,7 @@ import "cypress-real-events/support";
 class Homepage {
     loadHomepage(){
         //Adjust the viewport
-        cy.viewport(1300, 3500)
+        cy.viewport(1300, 1200)
 
         //Call the Sogeti Side
         cy.visit('https://www.sogeti.com/')
