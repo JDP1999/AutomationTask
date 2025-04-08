@@ -105,8 +105,24 @@ class ContactPage {
         cy.get('div[id="slider"]').realMouseDown().realMouseMove(280,0).realMouseUp()
 
         //Check Error Message displayed
-        cy.get('.mf_form__errors').should('be.visible')
+        cy.get('div[class="mf_form__errors"]').should('be.visible')
         
+    }
+    checkCheckbox(){
+        //Check if checkbox exists
+        cy.get('input[type="checkbox"]').should('exist')
+
+        //Check if checkbox is visible
+        cy.get('input[type="checkbox"]').should('be.visible')
+
+        //Check if checkbox is unchecked
+        cy.get('input[type="checkbox"]').should('not.have.attr','data-gtm-form-interact-field-id')
+
+        //Cick checkbox
+        cy.get('input[type="checkbox"]').click()
+
+        //Check if checkbox is checked
+        cy.get('input[type="checkbox"]').should('have.attr','data-gtm-form-interact-field-id')
     }
 
 }

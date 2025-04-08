@@ -13,6 +13,7 @@ describe('FillForm', () => {
       contactpage.enterEmail();
       contactpage.enterMobilenumber();
       contactpage.enterMessage();
+      contactpage.checkCheckbox();
       contactpage.handleSlider();
     })
   })
