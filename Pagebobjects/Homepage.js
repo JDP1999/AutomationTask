@@ -20,7 +20,7 @@ class Homepage {
         //Click the Accept Cookies Button
         cy.get('#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll').click({ force: true })
 
-        //cy.wait(4000)
+        cy.wait(4000)
     }
 
     hoverServicesButton(){
@@ -35,7 +35,7 @@ class Homepage {
 
         //Hover over Services Button
         cy.get('nav[class="header-nav"]>ul>li>a[href*="services"]').realHover('mouse')
-        
+
         //Check class after hover
         cy.get('nav[class="header-nav"]>ul>li[aria-label="Services Submenu"]').should('have.class','t1-menu-li active')
     }
@@ -60,9 +60,10 @@ class Homepage {
         //Check if the Global Links Button is visible
         cy.get('.header-lang-open > a > .outer > .inner').should('be.visible')
 
+        //Click the Global Links Button
         cy.get('.header-lang-open > a > .outer > .inner').click()
 
-        cy.wait(4000)
+        cy.wait(7000)
 
         //Click the Global Links Button
         cy.get('.header-lang-open > a > .outer > .inner').click()
@@ -98,7 +99,7 @@ class Homepage {
         cy.get('ul[id="menu-location-menu"]>li>a[href*="www.sogeti.be"]').click()
 
         //Check if the new url is called
-        cy.url().should('include', 'https://www.sogeti.be/')
+        cy.url().should('include', 'https://www.sogeti.br/')
     }
     checkLanguageIcon() {
         //Check if the Language Icon exists
