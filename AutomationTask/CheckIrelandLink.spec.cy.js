@@ -7,6 +7,6 @@ describe('CheckIrelandLink',()=>{
       homepage.clickGlobalLinksButton();
       homepage.clickIrelandLink();
       homepage.acceptCountriesCookies();
-      homepage.checkGlobalLinksButton();
+      homepage.checkLanguageIcon();
     })
   })

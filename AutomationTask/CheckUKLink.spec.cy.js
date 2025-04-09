@@ -7,6 +7,6 @@ describe('CheckUKLink',()=>{
       homepage.clickGlobalLinksButton();
       homepage.clickUnitedKingdomLink();
       homepage.acceptCountriesCookies();
-      homepage.checkGlobalLinksButton();
+      homepage.checkLanguageIcon();
     })
   })

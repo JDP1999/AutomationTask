@@ -6,6 +6,6 @@ describe('CheckNetherlandsLink',()=>{
       homepage.acceptCookies();
       homepage.clickGlobalLinksButton();
       homepage.clickNetherlandsLink();
-      homepage.checkGlobalLinksButton();
+      homepage.checkLanguageIcon();
     })
   })

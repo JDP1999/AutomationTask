@@ -7,6 +7,6 @@ describe('CheckLuxembourgLink',()=>{
       homepage.clickGlobalLinksButton();
       homepage.clickLuxembourgLink();
       homepage.acceptCountriesCookies();
-      homepage.checkGlobalLinksButton();
+      homepage.checkLanguageIcon();
     })
   })

@@ -7,7 +7,7 @@ describe('CheckFinnlandLink', () => {
       homepage.clickGlobalLinksButton();
       homepage.clickFinnlandLink();
       homepage.acceptCountriesCookies();
-      homepage.checkGlobalLinksButton();
+      homepage.checkLanguageIcon();
     })
   
   })

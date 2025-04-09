@@ -7,6 +7,6 @@ describe('CheckSpainLink',()=>{
       homepage.clickGlobalLinksButton();
       homepage.clickSpainLink();
       homepage.acceptCountriesCookies();
-      homepage.checkGlobalLinksButton();
+      homepage.checkLanguageIcon();
     })
   })

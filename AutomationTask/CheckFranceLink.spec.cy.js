@@ -7,6 +7,6 @@ describe('CheckFranceLink', () => {
       homepage.clickGlobalLinksButton();
       homepage.clickFranceLink();
       homepage.acceptCountriesCookies();
-      homepage.checkGlobalLinksButton();
+      homepage.checkLanguageIcon();
     })
   })

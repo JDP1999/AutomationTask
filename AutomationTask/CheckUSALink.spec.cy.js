@@ -7,6 +7,6 @@ describe('CheckUSALink',()=>{
       homepage.clickGlobalLinksButton();
       homepage.clickUnitedStatesLink();
       homepage.acceptCountriesCookies();
-      homepage.checkGlobalLinksButton();
+      homepage.checkLanguageIcon();
     })
   })

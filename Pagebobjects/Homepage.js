@@ -20,7 +20,7 @@ class Homepage {
         //Click the Accept Cookies Button
         cy.get('#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll').click({ force: true })
 
-        cy.wait(4000)
+        //cy.wait(4000)
     }
 
     hoverServicesButton(){
@@ -53,7 +53,6 @@ class Homepage {
         //Check that the new url is called
         cy.url().should('contain', 'services')
     }
-    
     clickGlobalLinksButton(){
         //Check if the Global Links Button exists
         cy.get('.header-lang-open > a > .outer > .inner').should('exist')
@@ -61,12 +60,32 @@ class Homepage {
         //Check if the Global Links Button is visible
         cy.get('.header-lang-open > a > .outer > .inner').should('be.visible')
 
+        cy.get('.header-lang-open > a > .outer > .inner').click()
+
+        cy.wait(4000)
+
         //Click the Global Links Button
         cy.get('.header-lang-open > a > .outer > .inner').click()
+    }
+    checkGlobalLinksButton(){
+        //Check if the Global Links Button exists
+        cy.get('.header-lang-open > a > .outer > .inner').should('exist')
 
-        cy.wait(3000)
+        //Check if the Global Links Button is visible
+        cy.get('.header-lang-open > a > .outer > .inner').should('be.visible')
+    }
+    clickGlobalLink(){
+        //Check if the Link for the specific country exists
+        cy.get('ul[id="menu-location-menu"]>li>a[href*="www.sogeti.com"]').should('exist')
 
-        cy.get('.header-lang-open > a > .outer > .inner').click()
+        //Check if the Link for the specific country is visible
+        cy.get('ul[id="menu-location-menu"]>li>a[href*="www.sogeti.com"]').should('be.visible')
+
+        //Click the Link for the specific country
+        cy.get('ul[id="menu-location-menu"]>li>a[href*="www.sogeti.com"]').click()
+
+        //Check if the new url is called
+        cy.url().should('include', 'https://www.sogeti.com/')
     }
     clickBelgiumLink(){
         //Check if the Link for the specific country exists
@@ -81,7 +100,7 @@ class Homepage {
         //Check if the new url is called
         cy.url().should('include', 'https://www.sogeti.be/')
     }
-    checkGlobalLinksButton() {
+    checkLanguageIcon() {
         //Check if the Language Icon exists
         cy.get('.language-icon').should('exist')
 

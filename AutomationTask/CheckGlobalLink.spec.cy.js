@@ -1,12 +1,11 @@
 import Homepage from '../Pagebobjects/Homepage'
-describe('CheckBelgiumLink', () => {
+describe('CheckGlobalLink', () => {
     it('Checks the Belgium link', () => {
       const homepage = new Homepage();
       homepage.loadHomepage();
       homepage.acceptCookies();
       homepage.clickGlobalLinksButton();
-      homepage.clickBelgiumLink();
-      homepage.acceptCountriesCookies();
-      homepage.checkLanguageIcon();
+      homepage.clickGlobalLink();
+      homepage.checkGlobalLinksButton();
     })
   })
