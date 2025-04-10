@@ -5,7 +5,6 @@ describe('CheckGlobalLink', () => {
       homepage.loadHomepage();
       homepage.acceptCookies();
       homepage.clickGlobalLinksButton();
-      homepage.clickGlobalLink();
-      homepage.checkGlobalLinksButton();
+      homepage.clickGlobalLinks();
     })
   })

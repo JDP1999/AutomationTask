@@ -1,0 +1,8 @@
+{
+    "acceptCookies":"#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll",
+    "ServicesBtn":"nav[class='header-nav']>ul>li>a[href*='services']",
+    "ServicesSubmenu":"nav[class='header-nav']>ul>li[aria-label='Services Submenu']",
+    "EndToEndSolutionsBtn":"a[aria-label='Explore about End-to-end Solutions']",
+    "AutomationBtn":"a[href*='automation']>div>span",
+    "GlobalLinksBtn":".header-lang-open > a > .outer > .inner"
+}

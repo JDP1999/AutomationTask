@@ -14,9 +14,11 @@ module.exports = defineConfig({
       "saveAllAttempts":true
     },
     "screenshotsFolder":"cypress\\reports\\screenshots",
-    "video": true,
     "videosFolder":"cypress\\reports\\videos",
     "chromeWebSecurity": false,
+    viewportWidth:1200,
+    viewportHeight:1200,
+    baseUrl: 'https://www.sogeti.com/',
     setupNodeEvents(on, config) {
       // implement node event listeners here
       require('cypress-mochawesome-reporter/plugin')(on);

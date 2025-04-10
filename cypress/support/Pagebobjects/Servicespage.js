@@ -1,20 +1,21 @@
 class Servicespage {
     clickEndtoEndSolutionsButton() {
+        cy.fixture("identifiers.json").then((identifiers) => {
+            //Check that the End To End Solutions Button exists
+            cy.get(identifiers.EndToEndSolutionsBtn).should('exist')
 
-        //Check that the End To End Solutions Button exists
-        cy.get('a[aria-label="Explore about End-to-end Solutions"]').should('exist')
+            //Scroll the End to End Solutions Button into view
+            cy.get(identifiers.EndToEndSolutionsBtn).scrollIntoView()
 
-        //Scroll the End to End Solutions Button into view
-        cy.get('a[aria-label="Explore about End-to-end Solutions"]').scrollIntoView()
+            //Check that the End To End Solutions Button is visible
+            cy.get(identifiers.EndToEndSolutionsBtn).should('be.visible')
 
-        //Check that the End To End Solutions Button is visible
-        cy.get('a[aria-label="Explore about End-to-end Solutions"]').should('be.visible')
+            //Click the End to End Solutions Button
+            cy.get(identifiers.EndToEndSolutionsBtn).click({ force: true })
 
-        //Click the End to End Solutions Button
-        cy.get('a[aria-label="Explore about End-to-end Solutions"]').click({ force: true })
-
-        //Check that the new url is called
-        cy.url().should('contain', 'end-to-end-solutions')
+            //Check that the new url is called
+            cy.url().should('contain', 'end-to-end-solutions')
+        })
     }
 
 }

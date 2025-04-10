@@ -1,90 +1,108 @@
 import "cypress-real-events/support";
 class Homepage {
-    loadHomepage(){
-        //Adjust the viewport
-        cy.viewport(1300, 1200)
-
+    loadHomepage() {
         //Call the Sogeti Side
-        cy.visit('https://www.sogeti.com/')
+        cy.visit('/')
 
         //Check if the Sogeti Side is called
-        cy.url().should('include','https://www.sogeti.com/')
-
-        cy.get('nav[aria-label="Services SubMenu"]').should('exist')
-    }
-    acceptCookies(){
-        //Check if the Accept Cookies Button exists
-        cy.get('#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll').should('exist')
-
-        //Check if the Accept Cookies Button is visible
-        cy.get('#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll').should('be.visible')
-
-        //Click the Accept Cookies Button
-        cy.get('#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll').click({ force: true })
-
-    }
-
-    hoverServicesButton(){
-        //Check that the Services Button exists
-        cy.get('nav[class="header-nav"]>ul>li>a[href*="services"]').should('exist')
-
-        //Check that the Services Button is visible
-        cy.get('nav[class="header-nav"]>ul>li>a[href*="services"]').should('be.visible')
-
-        //Check class before hover
-        cy.get('nav[class="header-nav"]>ul>li[aria-label="Services Submenu"]').should('have.class','t1-menu-li')
-
-        //Hover over Services Button
-        cy.get('nav[class="header-nav"]>ul>li>a[href*="services"]').realHover();
-
-        //Check class after hover
-        cy.get('nav[class="header-nav"]>ul>li[aria-label="Services Submenu"]').should('have.class','t1-menu-li active')
-    }
-
-    clickServicesButton(){
-        //Check that the Services Button exists
-        cy.get('nav[class="header-nav"]>ul>li>a[href*="services"]').should('exist')
-
-        //Check that the Services Button is visible
-        cy.get('nav[class="header-nav"]>ul>li>a[href*="services"]').should('be.visible')
-
-        //Click the Services Button
-        cy.get('nav[class="header-nav"]>ul>li>a[href*="services"]').click({ force: true })
-        
-        //Check that the new url is called
-        cy.url().should('contain', 'services')
-    }
-    clickGlobalLinksButton(){
-        //Check if the Global Links Button exists
-        cy.get('.header-lang-open > a > .outer > .inner').should('exist')
-
-        //Check if the Global Links Button is visible
-        cy.get('.header-lang-open > a > .outer > .inner').should('be.visible')
-
-        //Click the Global Links Button
-        cy.get('.header-lang-open > a > .outer > .inner').click()
-    }
-    checkGlobalLinksButton(){
-        //Check if the Global Links Button exists
-        cy.get('.header-lang-open > a > .outer > .inner').should('exist')
-
-        //Check if the Global Links Button is visible
-        cy.get('.header-lang-open > a > .outer > .inner').should('be.visible')
-    }
-    clickGlobalLink(){
-        //Check if the Link for the specific country exists
-        cy.get('ul[id="menu-location-menu"]>li>a[href*="www.sogeti.com"]').should('exist')
-
-        //Check if the Link for the specific country is visible
-        cy.get('ul[id="menu-location-menu"]>li>a[href*="www.sogeti.com"]').should('be.visible')
-
-        //Click the Link for the specific country
-        cy.get('ul[id="menu-location-menu"]>li>a[href*="www.sogeti.com"]').click()
-
-        //Check if the new url is called
         cy.url().should('include', 'https://www.sogeti.com/')
     }
-    clickBelgiumLink(){
+    acceptCookies() {
+        cy.fixture("identifiers.json").then((identifiers) => {
+            //Check if the Accept Cookies Button exists
+            cy.get(identifiers.acceptCookies).should('exist')
+
+            //Check if the Accept Cookies Button is visible
+            cy.get(identifiers.acceptCookies).should('be.visible')
+
+            //Click the Accept Cookies Button
+            cy.get(identifiers.acceptCookies).click({ force: true })
+
+            cy.wait(10000)
+        })
+
+    }
+    hoverServicesButton() {
+        cy.fixture("identifiers.json").then((identifiers) => {
+            //Check that the Services Button exists
+            cy.get(identifiers.ServicesBtn).should('exist')
+
+            //Check that the Services Button is visible
+            cy.get(identifiers.ServicesBtn).should('be.visible')
+
+            //Check class before hover
+            cy.get(identifiers.ServicesSubmenu).should('have.class', 't1-menu-li')
+
+            //Hover over Services Button
+            cy.get(identifiers.ServicesBtn).realHover();
+
+            //Check class after hover
+            cy.get(identifiers.ServicesSubmenu).should('have.class', 't1-menu-li active')
+        })
+    }
+    clickServicesButton() {
+        cy.fixture("identifiers.json").then((identifiers) => {
+            //Check that the Services Button exists
+            cy.get(identifiers.ServicesBtn).should('exist')
+
+            //Check that the Services Button is visible
+            cy.get(identifiers.ServicesBtn).should('be.visible')
+
+            //Click the Services Button
+            cy.get(identifiers.ServicesBtn).click({ force: true })
+
+            //Check that the new url is called
+            cy.url().should('contain', 'services')
+        })
+    }
+    clickGlobalLinksButton() {
+        //Check if the Global Links Button exists
+        cy.fixture("identifiers.json").then((identifiers) =>{
+            //Check if the Global Links Button exists
+            cy.get(identifiers.GlobalLinksBtn).should('exist')
+
+            //Check if the Global Links Button is visible
+            cy.get(identifiers.GlobalLinksBtn).should('be.visible')
+
+            //Click the Global Links Button
+            cy.get(identifiers.GlobalLinksBtn).click()
+        })
+    }
+    checkGlobalLinksButton() {
+        cy.fixture("identifiers.json").then((identifiers)=>{
+            //Check if the Global Links Button exists
+            cy.get(identifiers.GlobalLinksBtn).should('exist')
+
+            //Check if the Global Links Button is visible
+            cy.get(identifiers.GlobalLinksBtn).should('be.visible')
+        })
+    }
+    clickGlobalLinks() {
+        var length,counter=0;
+        cy.fixture('countries.json').then((countries)=>{
+            //length=countries.length
+            for(counter=0;counter<=5;counter++){
+                //Check if the Link for the specific country exists
+                cy.get(countries[counter].button).should('exist')
+
+                //Check if the Link for the specific country is visible
+                cy.get(countries[counter].button).should('be.visible')
+
+                //Click the Link for the specific country
+                cy.get(countries[counter].button).click()
+
+                //Check if the new url is called
+                cy.url().should('include', countries[counter].newUrl)
+
+                cy.go("back")
+
+                cy.url().should('include','https://www.sogeti.com/')
+
+                this.clickGlobalLinksButton()
+            }
+        })
+    }
+    clickBelgiumLink() {
         //Check if the Link for the specific country exists
         cy.get('ul[id="menu-location-menu"]>li>a[href*="www.sogeti.be"]').should('exist')
 
@@ -104,7 +122,7 @@ class Homepage {
         //Check if the Language Icon is visible
         cy.get('.language-icon').should('be.visible')
     }
-    acceptCountriesCookies(){
+    acceptCountriesCookies() {
         //Check if the Accept Cookies Button exists
         cy.get('button[class*="accept"]').should('exist')
 
@@ -114,7 +132,7 @@ class Homepage {
         //Click the Accept Cookies Button
         cy.get('button[class*="accept"]').click()
     }
-    clickFinnlandLink(){
+    clickFinnlandLink() {
         //Check if the Link for the specific country exists
         cy.get('ul[id="menu-location-menu"]>li>a[href*="www.sogeti.fi"]').should('exist')
 
@@ -127,7 +145,7 @@ class Homepage {
         //Check if the new url is called
         cy.url().should('include', 'https://www.sogeti.fi/')
     }
-    clickFranceLink(){
+    clickFranceLink() {
         //Check if the Link for the specific country exists
         cy.get('ul[id="menu-location-menu"]>li>a[href*="www.fr.sogeti.com"]').should('exist')
 
@@ -140,7 +158,7 @@ class Homepage {
         //Check if the new url is called
         cy.url().should('include', 'https://www.fr.sogeti.com/')
     }
-    clickGermanyLink(){
+    clickGermanyLink() {
         //Check if the Link for the specific country exists
         cy.get('ul[id="menu-location-menu"]>li>a[href*="www.sogeti.de"]').should('exist')
 
@@ -153,7 +171,7 @@ class Homepage {
         //Check if the new url is called
         cy.url().should('include', 'https://www.sogeti.de/')
     }
-    clickIrelandLink(){
+    clickIrelandLink() {
         //Check if the Link for the specific country exists
         cy.get('ul[id="menu-location-menu"]>li>a[href*="www.sogeti.ie"]').should('exist')
 
@@ -166,7 +184,7 @@ class Homepage {
         //Check if the new url is called
         cy.url().should('include', 'https://www.sogeti.ie/')
     }
-    clickLuxembourgLink(){
+    clickLuxembourgLink() {
         //Check if the Link for the specific country is exists
         cy.get('ul[id="menu-location-menu"]>li>a[href*="www.sogeti.lu"]').should('exist')
 
@@ -179,7 +197,7 @@ class Homepage {
         //Check if the new url is called
         cy.url().should('include', 'https://www.sogeti.lu/')
     }
-    clickNorwayLink(){
+    clickNorwayLink() {
         //Check if the Link for the specific country exists
         cy.get('ul[id="menu-location-menu"]>li>a[href*="www.sogeti.no"]').should('exist')
 
@@ -192,7 +210,7 @@ class Homepage {
         //Check if the new url is called
         cy.url().should('include', 'https://www.sogeti.no/')
     }
-    clickNetherlandsLink(){
+    clickNetherlandsLink() {
         //Check if the Link for the specific country exists
         cy.get('ul[id="menu-location-menu"]>li>a[href*="www.sogeti.nl"]').should('exist')
 
@@ -205,7 +223,7 @@ class Homepage {
         //Check if the new url is called
         cy.url().should('include', 'https://www.sogeti.nl/')
     }
-    clickSpainLink(){
+    clickSpainLink() {
         //Check if the Link for the specific country exists
         cy.get('ul[id="menu-location-menu"]>li>a[href*="www.sogeti.es"]').should('exist')
 
@@ -218,7 +236,7 @@ class Homepage {
         //Check if the new url is called
         cy.url().should('include', 'https://www.sogeti.es/')
     }
-    clickSwedenLink(){
+    clickSwedenLink() {
         //Check if the Link for the specific country is exists
         cy.get('ul[id="menu-location-menu"]>li>a[href*="www.sogeti.se"]').should('exist')
 
@@ -231,7 +249,7 @@ class Homepage {
         //Check if the new url is called
         cy.url().should('include', 'https://www.sogeti.se/')
     }
-    clickUnitedKingdomLink(){
+    clickUnitedKingdomLink() {
         //Check if the Link for the specific country exists
         cy.get('ul[id="menu-location-menu"]>li>a[href*="www.uk.sogeti.com"]').should('exist')
 
@@ -244,7 +262,7 @@ class Homepage {
         //Check if the new url is called
         cy.url().should('include', 'https://www.sogeti.uk/')
     }
-    clickUnitedStatesLink(){
+    clickUnitedStatesLink() {
         //Check if the Link for the specific country is exists
         cy.get('ul[id="menu-location-menu"]>li>a[href*="www.us.sogeti.com"]').should('exist')
 
@@ -257,7 +275,7 @@ class Homepage {
         //Check if the new url is called
         cy.url().should('include', 'https://www.sogeti.us/')
     }
-    clickContactUsButton(){
+    clickContactUsButton() {
         //Check if the Contact Us Button exists
         cy.get('nav[class="header-nav"]>ul>li>a[href*="contact-us"]>span>span').should('exist')
 
@@ -268,7 +286,7 @@ class Homepage {
         cy.get('nav[class="header-nav"]>ul>li>a[href*="contact-us"]>span>span').click()
 
         //Check if the new url is called
-        cy.url().should('include','contact-us')
+        cy.url().should('include', 'contact-us')
     }
 
 }

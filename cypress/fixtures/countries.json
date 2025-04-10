@@ -1,0 +1,27 @@
+[
+    {
+        "button":"ul[id='menu-location-menu']>li>a[href*='www.sogeti.com']",
+        "newUrl":"https://www.sogeti.com/"
+    },
+    {
+        "button":"ul[id='menu-location-menu']>li>a[href*='www.sogeti.be']",
+        "newUrl":"https://www.sogeti.be/"
+    },
+    {
+        "button":"ul[id='menu-location-menu']>li>a[href*='www.sogeti.fi']",
+        "newUrl":"https://www.sogeti.fi/"
+    },
+    {
+        "button":"ul[id='menu-location-menu']>li>a[href*='www.sogeti.fr']",
+        "newUrl":"https://www.sogeti.fr/"
+    },
+    {
+        "button":"ul[id='menu-location-menu']>li>a[href*='www.sogeti.de']",
+        "newUrl":"https://www.sogeti.de/"
+    },
+    {
+        "button":"ul[id='menu-location-menu']>li>a[href*='www.sogeti.ie']",
+        "newUrl":"https://www.sogeti.ie/"
+    }
+
+]
