@@ -7,7 +7,7 @@ module.exports = defineConfig({
       "charts": true,
       "reportPageTitle": 'Report',
       "reportFilename": 'Report',
-      "reportDir":"C:\\Users\\jportzeh\\Cypress\\cypress\\reports",
+      "reportDir":"cypress\\reports",
       "embeddedScreenshots": true,
       "inlineAssets": true,
       "html":true,

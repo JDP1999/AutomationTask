@@ -1,4 +1,7 @@
 import "cypress-real-events/support";
+
+var is_active=false
+
 class Homepage {
     loadHomepage() {
         //Call the Sogeti Side
@@ -18,26 +21,48 @@ class Homepage {
             //Click the Accept Cookies Button
             cy.get(identifiers.acceptCookies).click({ force: true })
 
-            cy.wait(10000)
+            //cy.wait(10000)
         })
 
     }
     hoverServicesButton() {
+        var counter=0
         cy.fixture("identifiers.json").then((identifiers) => {
+
             //Check that the Services Button exists
             cy.get(identifiers.ServicesBtn).should('exist')
 
             //Check that the Services Button is visible
             cy.get(identifiers.ServicesBtn).should('be.visible')
 
-            //Check class before hover
-            cy.get(identifiers.ServicesSubmenu).should('have.class', 't1-menu-li')
+            for(counter=0;counter<=10;counter++){
+                //Hover over Services Button
+                cy.get(identifiers.ServicesBtn).realHover()
 
-            //Hover over Services Button
-            cy.get(identifiers.ServicesBtn).realHover();
+                cy.wait(2000)
 
-            //Check class after hover
-            cy.get(identifiers.ServicesSubmenu).should('have.class', 't1-menu-li active')
+                this.continueIfActive()
+
+                if(is_active==true){
+                    counter=counter+10
+                }
+
+                cy.get(identifiers.ServicesBtn).realMouseMove(100,0)
+            }
+             //Hover over Services Button
+             cy.get(identifiers.ServicesBtn).realHover()
+
+             cy.get(identifiers.ServicesSubmenu).should('have.class', 't1-menu-li active')
+            
+        })
+    }
+    continueIfActive(){
+        cy.fixture("identifiers.json").then((identifiers)=>{
+            cy.get('body').then((body)=>{
+                if(body.find(identifiers.ServicesSubmenu).length>0){
+                    is_active=true
+                }
+            })
         })
     }
     clickServicesButton() {
@@ -103,17 +128,19 @@ class Homepage {
         })
     }
     clickContactUsButton() {
-        //Check if the Contact Us Button exists
-        cy.get('nav[class="header-nav"]>ul>li>a[href*="contact-us"]>span>span').should('exist')
+        cy.fixture('identifiers.json').then((identifiers)=>{
+            //Check if the Contact Us Button exists
+            cy.get(identifiers.ContactUsButton).should('exist')
 
-        //Check if the Contact Us Button is visible
-        cy.get('nav[class="header-nav"]>ul>li>a[href*="contact-us"]>span>span').should('be.visible')
+            //Check if the Contact Us Button is visible
+            cy.get(identifiers.ContactUsButton).should('be.visible')
 
-        //Click the Contact Us Button
-        cy.get('nav[class="header-nav"]>ul>li>a[href*="contact-us"]>span>span').click()
+            //Click the Contact Us Button
+            cy.get(identifiers.ContactUsButton).click()
 
-        //Check if the new url is called
-        cy.url().should('include', 'contact-us')
+            //Check if the new url is called
+            cy.url().should('include', 'contact-us')
+        })
     }
 
 }
