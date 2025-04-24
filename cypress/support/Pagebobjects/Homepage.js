@@ -22,47 +22,29 @@ class Homepage {
             cy.get(identifiers.acceptCookies).click({ force: true })
 
             //cy.wait(10000)
+
+            cy.intercept({method: 'GET', url:"https://www.sogeti.com/wp-content/uploads/sites/3/2024/10/cropped-favicon-1.webp?w=32"}).as("video")
+
+            cy.wait("@video")
         })
 
     }
     hoverServicesButton() {
-        var counter=0
         cy.fixture("identifiers.json").then((identifiers) => {
+
+            /*//Timeout to make sure the page is loaded
+            cy.wait(10000)*/
 
             //Check that the Services Button exists
             cy.get(identifiers.ServicesBtn).should('exist')
 
             //Check that the Services Button is visible
             cy.get(identifiers.ServicesBtn).should('be.visible')
-
-            for(counter=0;counter<=10;counter++){
-                //Hover over Services Button
-                cy.get(identifiers.ServicesBtn).realHover()
-
-                cy.wait(2000)
-
-                this.continueIfActive()
-
-                if(is_active==true){
-                    counter=counter+10
-                }
-
-                cy.get(identifiers.ServicesBtn).realMouseMove(100,0)
-            }
              //Hover over Services Button
              cy.get(identifiers.ServicesBtn).realHover()
 
              cy.get(identifiers.ServicesSubmenu).should('have.class', 't1-menu-li active')
             
-        })
-    }
-    continueIfActive(){
-        cy.fixture("identifiers.json").then((identifiers)=>{
-            cy.get('body').then((body)=>{
-                if(body.find(identifiers.ServicesSubmenu).length>0){
-                    is_active=true
-                }
-            })
         })
     }
     clickServicesButton() {
