@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "6f0212ff-b00d-4c4a-b00e-a4a1e46c5538",
+		"name": "Automation Task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "44346044",
+		"_collection_link": "https://johannes-996826.postman.co/workspace/Johannes's-Workspace~fffaf837-7430-4cfc-8077-521c0e681862/collection/44346044-6f0212ff-b00d-4c4a-b00e-a4a1e46c5538?action=share&source=collection_link&creator=44346044"
+	},
+	"item": [
+		{
+			"name": "API Test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = pm.response.json()\r",
+							"var length = response.places.length\r",
+							"var counter = 0\r",
+							"var result = 0\r",
+							"var is_found = false\r",
+							"pm.test('Status', function(){\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"pm.test('Content-Type', function(){\r",
+							"    pm.expect(pm.response.headers.get('content-type')).to.eq('application/json')\r",
+							"})\r",
+							"pm.test('ResponseTime', function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000)\r",
+							"})\r",
+							"pm.test('Country', function(){\r",
+							"    pm.expect(response.country).to.eq('Germany')\r",
+							"})\r",
+							"pm.test('State', function(){\r",
+							"    pm.expect(response.state).to.eq('Baden-Württemberg')\r",
+							"})\r",
+							"pm.test('Places', function(){\r",
+							"    for(counter=0;counter<=length-1;counter++){\r",
+							"        if(response.places[counter][\"post code\"]==70597){\r",
+							"            if(response.places[counter][\"place name\"]=='Stuttgart Degerloch'){\r",
+							"                is_found=true\r",
+							"            }\r",
+							"        }\r",
+							"    }\r",
+							"    pm.expect(is_found).to.eq(true)\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://api.zippopotam.us/de/bw/stuttgart"
+			},
+			"response": []
+		},
+		{
+			"name": "Beverly Hills",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = pm.response.json()\r",
+							"pm.test('Status', function(){\r",
+							"    pm.expect(pm.response).to.have.status(200)\r",
+							"})\r",
+							"pm.test('Application Type', function(){\r",
+							"    pm.expect(pm.response.headers.get('content-type')).to.eq('application/json')\r",
+							"})\r",
+							"pm.test('ResponseTime', function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000)\r",
+							"})\r",
+							"pm.test('Place Name', function(){\r",
+							"    pm.expect(response.places[0][\"place name\"]).to.eq('Beverly Hills')\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{Url1}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Schenectady",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = pm.response.json()\r",
+							"pm.test('Status', function(){\r",
+							"    pm.expect(pm.response).to.have.status(200)\r",
+							"})\r",
+							"pm.test('Application Type', function(){\r",
+							"    pm.expect(pm.response.headers.get('content-type')).to.eq('application/json')\r",
+							"})\r",
+							"pm.test('ResponseTime', function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000)\r",
+							"})\r",
+							"pm.test('Place Name', function(){\r",
+							"    pm.expect(response.places[0][\"place name\"]).to.eq('Schenectady')\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{Url2}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Waverley",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = pm.response.json()\r",
+							"pm.test('Status', function(){\r",
+							"    pm.expect(pm.response).to.have.status(200)\r",
+							"})\r",
+							"pm.test('Application Type', function(){\r",
+							"    pm.expect(pm.response.headers.get('content-type')).to.eq('application/json')\r",
+							"})\r",
+							"pm.test('ResponseTime', function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000)\r",
+							"})\r",
+							"pm.test('Place Name', function(){\r",
+							"    pm.expect(response.places[0][\"place name\"]).to.eq('Waverley')\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{Url3}}"
+			},
+			"response": []
+		}
+	]
+}
