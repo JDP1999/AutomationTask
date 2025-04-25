@@ -21,7 +21,7 @@ class Homepage {
             //Click the Accept Cookies Button
             cy.get(identifiers.acceptCookies).click({ force: true })
 
-            cy.intercept("https://www.sogeti.com/wp-content/themes/sogeti2024/public/dist/header-search.build.js").as("load")
+            cy.intercept("https://www.sogeti.com/wp-content/themes/sogeti2024/public/dist/archive-filter-expands.build.js").as("load")
 
             cy.wait("@load",{ timeout:30000})
         })
