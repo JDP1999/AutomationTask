@@ -9,6 +9,12 @@ class Homepage {
 
         //Check if the Sogeti Side is called
         cy.url().should('include', 'https://www.sogeti.com/')
+
+        //Spy an API Request that is called when the page is loaded
+        cy.intercept("https://www.sogeti.com/wp-content/themes/sogeti2024/public/dist/archive-filter-expands.build.js").as("load")
+
+        //Wait for the request being send
+        cy.wait("@load",{ timeout:30000})
     }
     acceptCookies() {
         cy.fixture("identifiers.json").then((identifiers) => {
@@ -20,10 +26,6 @@ class Homepage {
 
             //Click the Accept Cookies Button
             cy.get(identifiers.acceptCookies).click({ force: true })
-
-            cy.intercept("https://www.sogeti.com/wp-content/themes/sogeti2024/public/dist/archive-filter-expands.build.js").as("load")
-
-            cy.wait("@load",{ timeout:30000})
         })
 
     }
@@ -34,10 +36,10 @@ class Homepage {
 
             //Check that the Services Button is visible
             cy.get(identifiers.ServicesBtn).should('be.visible')
-             //Hover over Services Button
-             cy.get(identifiers.ServicesBtn).realHover()
+            //Hover over Services Button
+            cy.get(identifiers.ServicesBtn).realHover()
 
-             cy.get(identifiers.ServicesSubmenu).should('have.class', 't1-menu-li active')
+            cy.get(identifiers.ServicesSubmenu).should('have.class', 't1-menu-li active')
             
         })
     }
@@ -69,20 +71,13 @@ class Homepage {
             cy.get(identifiers.GlobalLinksBtn).click()
         })
     }
-    checkGlobalLinksButton() {
-        cy.fixture("identifiers.json").then((identifiers)=>{
-            //Check if the Global Links Button exists
-            cy.get(identifiers.GlobalLinksBtn).should('exist')
-
-            //Check if the Global Links Button is visible
-            cy.get(identifiers.GlobalLinksBtn).should('be.visible')
-        })
-    }
     clickGlobalLinks() {
-        var length,counter=0;
+        var counter=0;
         cy.fixture('countries.json').then((countries)=>{
-            //length=countries.countries.length
             for(counter in countries.countries){
+                //Calls the Method to click the Global Links Button
+                this.clickGlobalLinksButton()
+
                 //Check if the Link for the specific country exists
                 cy.get(countries.countries[counter].button).should('exist')
 
@@ -97,9 +92,7 @@ class Homepage {
 
                 cy.go("back")
 
-                cy.url().should('include','https://www.sogeti.com/')
-
-                this.clickGlobalLinksButton()
+                cy.url().should('include', 'https://www.sogeti.com/')
             }
         })
     }
