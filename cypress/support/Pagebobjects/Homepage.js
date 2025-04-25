@@ -21,16 +21,14 @@ class Homepage {
             //Click the Accept Cookies Button
             cy.get(identifiers.acceptCookies).click({ force: true })
 
-            cy.wait(7000)
+            cy.intercept("https://www.sogeti.com/wp-content/themes/sogeti2024/public/dist/header-search.build.js").as("load")
+
+            cy.wait("@load",{ timeout:30000})
         })
 
     }
     hoverServicesButton() {
         cy.fixture("identifiers.json").then((identifiers) => {
-
-            /*//Timeout to make sure the page is loaded
-            cy.wait(10000)*/
-
             //Check that the Services Button exists
             cy.get(identifiers.ServicesBtn).should('exist')
 

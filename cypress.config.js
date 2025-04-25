@@ -3,6 +3,7 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   e2e: {
     "defaultCommandTimeout": 10000,
+    "responseTimeout": 10000,
     "reporter": 'cypress-mochawesome-reporter',
     "reporterOptions": {
       "charts": true,
