@@ -21,11 +21,7 @@ class Homepage {
             //Click the Accept Cookies Button
             cy.get(identifiers.acceptCookies).click({ force: true })
 
-            //cy.wait(10000)
-
-            cy.intercept({method: 'GET', url:"https://www.sogeti.com/wp-content/uploads/sites/3/2024/10/cropped-favicon-1.webp?w=32"}).as("video")
-
-            cy.wait("@video")
+            cy.wait(7000)
         })
 
     }
