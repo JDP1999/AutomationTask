@@ -11,6 +11,7 @@ module.exports = defineConfig({
       "reportFilename": 'Report',
       "reportDir":"cypress\\reports",
       "embeddedScreenshots": true,
+      "video":true,
       "inlineAssets": true,
       "html":true,
       "saveAllAttempts":true
