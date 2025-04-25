@@ -16,7 +16,6 @@ module.exports = defineConfig({
       "saveAllAttempts":true
     },
     "screenshotsFolder":"cypress\\reports\\screenshots",
-    "video":true,
     "videosFolder":"cypress\\reports\\videos",
     "chromeWebSecurity": false,
     viewportWidth:1200,
