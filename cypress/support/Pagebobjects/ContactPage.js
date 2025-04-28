@@ -1,87 +1,53 @@
 import "cypress-real-events/support";
 import { fakerDE as faker } from '@faker-js/faker';
+import AutomationMethods from "./AutomationMethods";
+const automation = new AutomationMethods()
 class ContactPage {
     enterFirstname() {
-        //Check if first name exists
-        cy.get('input[placeholder="First name"]').should('exist')
-
-        //Check if first name is visible
-        cy.get('input[placeholder="First name"]').should('be.visible')
-
-        //Write random first name with faker
-        cy.get('input[placeholder="First name"]').type(faker.person.firstName(), {force:true})
+        cy.fixture("identifiers.json").then((identifiers)=>{
+            //Type firstname into the textfield using the data from faker
+            automation.sendText(identifiers.Firstname,faker.person.firstName())
+        })
     }
     enterLastname() {
-        //Check if the lastname exists
-        cy.get('input[placeholder="Last name"]').should('exist')
-
-        //Check if lastname is visible
-        cy.get('input[placeholder="Last name"]').should('be.visible')
-
-        //Type the value for lastname into the field
-        cy.get('input[placeholder="Last name"]').type(faker.person.lastName(), {force:true})
+        cy.fixture("identifiers.json").then((identifiers)=>{
+            automation.sendText(identifiers.Lastname,faker.person.lastName())
+        })
     }
     enterEmail() {
-        //Check if email exists
-        cy.get('input[placeholder="E-mail address"]').should('exist')
-
-        //Check if email is visible
-        cy.get('input[placeholder="E-mail address"]').should('be.visible')
-
-        //Type the value for email into the field
-        cy.get('input[placeholder="E-mail address"]').type(faker.internet.email(), {force:true})
+        cy.fixture("identifiers.json").then((identifiers)=>{
+            automation.sendText(identifiers.Email,faker.internet.email())
+        })
     }
     enterMobilenumber() {
-        //Check if mobile exists
-        cy.get('input[placeholder="Phone number"]').should('exist')
-
-        //Check if mobile is visible
-        cy.get('input[placeholder="Phone number"]').should('be.visible')
-
-        //Type the value for mobile into the field
-        cy.get('input[placeholder="Phone number"]').type(faker.phone.number(), {force:true})
+        cy.fixture("identifiers.json").then((identifiers)=>{
+            automation.sendText(identifiers.Mobile,faker.phone.number())
+        })
     }
     enterMessage() {
-
-        //Check if message exists
-        cy.get('textarea[placeholder="Your Message"]').should('exist')
-
-
-        //Check if message field is visible
-        cy.get('textarea[placeholder="Your Message"]').should('be.visible')
-
-        //Type the value for message into the field
-        cy.get('textarea[placeholder="Your Message"]').type(faker.word.words(10), {force:true})
+        cy.fixture("identifiers.json").then((identifiers)=>{
+            automation.sendText(identifiers.Message,faker.word.words(10))
+        })
     }
     handleSlider(){
-        //Check if slider exists
-        cy.get('div[id="slider"]').should('exist')
+        cy.fixture("identifiers.json").then((identifiers)=>{
+            automation.slide(identifiers.Slider)
 
-        //Check if slider is visible
-        cy.get('div[id="slider"]').should('be.visible')
-
-        //Slide to the left
-        cy.get('div[id="slider"]').realMouseDown().realMouseMove(280,0).realMouseUp()
-
-        //Check Error Message displayed
-        cy.get('div[class="mf_form__errors"]').should('be.visible')
-        
+            //Check Error Message displayed
+            cy.get('div[class="mf_form__errors"]').should('be.visible')
+        })
     }
     checkCheckbox(){
-        //Check if checkbox exists
-        cy.get('input[type="checkbox"]').should('exist')
+        cy.fixture("identifiers.json").then((identifiers) => {
+            //Check if checkbox is unchecked
+            cy.get(identifiers.Checkbox).should('not.have.attr', 'data-gtm-form-interact-field-id') 
+            
+            //Click Checkbox
+            automation.click(identifiers.Checkbox)
 
-        //Check if checkbox is visible
-        cy.get('input[type="checkbox"]').should('be.visible')
-
-        //Check if checkbox is unchecked
-        cy.get('input[type="checkbox"]').should('not.have.attr','data-gtm-form-interact-field-id')
-
-        //Cick checkbox
-        cy.get('input[type="checkbox"]').click()
-
-        //Check if checkbox is checked
-        cy.get('input[type="checkbox"]').should('have.attr','data-gtm-form-interact-field-id')
+            //Check if checkbox is checked
+            cy.get(identifiers.Checkbox).should('have.attr', 'data-gtm-form-interact-field-id')
+        })
     }
 
 }

@@ -5,5 +5,13 @@
     "EndToEndSolutionsBtn":"a[aria-label='Explore about End-to-end Solutions']",
     "AutomationBtn":"a[href*='automation']>div>span",
     "GlobalLinksBtn":".header-lang-open > a > .outer > .inner",
-    "ContactUsButton":"nav[class='header-nav']>ul>li>a[href*='contact-us']>span>span"
+    "ContactUsButton":"nav[class='header-nav']>ul>li>a[href*='contact-us']>span>span",
+    "Firstname":"input[placeholder='First name']",
+    "Lastname":"input[placeholder='Last name']",
+    "Email":"input[placeholder='E-mail address']",
+    "Mobile":"input[placeholder='Phone number']",
+    "Message":"textarea[placeholder='Your Message']",
+    "Slider":"div[id='slider']",
+    "ErrorMessage":"div[class='mf_form__errors']",
+    "Checkbox":"input[type='checkbox']"
 }

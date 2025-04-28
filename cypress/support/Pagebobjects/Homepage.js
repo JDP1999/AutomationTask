@@ -1,6 +1,7 @@
 import "cypress-real-events/support";
-
+import AutomationMethods from "./AutomationMethods";
 var is_active=false
+const automation = new AutomationMethods()
 
 class Homepage {
     loadHomepage() {
@@ -18,41 +19,24 @@ class Homepage {
     }
     acceptCookies() {
         cy.fixture("identifiers.json").then((identifiers) => {
-            //Check if the Accept Cookies Button exists
-            cy.get(identifiers.acceptCookies).should('exist')
-
-            //Check if the Accept Cookies Button is visible
-            cy.get(identifiers.acceptCookies).should('be.visible')
-
-            //Click the Accept Cookies Button
-            cy.get(identifiers.acceptCookies).click({ force: true })
+            //Click the Accpet Cookies Button
+            automation.click(identifiers.acceptCookies)
         })
 
     }
     hoverServicesButton() {
         cy.fixture("identifiers.json").then((identifiers) => {
-            //Check that the Services Button exists
-            cy.get(identifiers.ServicesBtn).should('exist')
+            //Hover over the Services Button
+            automation.hover(identifiers.ServicesBtn)
 
-            //Check that the Services Button is visible
-            cy.get(identifiers.ServicesBtn).should('be.visible')
-            //Hover over Services Button
-            cy.get(identifiers.ServicesBtn).realHover()
-
+            //Check Services Button hovered
             cy.get(identifiers.ServicesSubmenu).should('have.class', 't1-menu-li active')
-            
         })
     }
     clickServicesButton() {
         cy.fixture("identifiers.json").then((identifiers) => {
-            //Check that the Services Button exists
-            cy.get(identifiers.ServicesBtn).should('exist')
-
-            //Check that the Services Button is visible
-            cy.get(identifiers.ServicesBtn).should('be.visible')
-
-            //Click the Services Button
-            cy.get(identifiers.ServicesBtn).click({ force: true })
+            //Click Services Button
+            automation.click(identifiers.ServicesBtn)
 
             //Check that the new url is called
             cy.url().should('contain', 'services')
@@ -61,14 +45,8 @@ class Homepage {
     clickGlobalLinksButton() {
         //Check if the Global Links Button exists
         cy.fixture("identifiers.json").then((identifiers) =>{
-            //Check if the Global Links Button exists
-            cy.get(identifiers.GlobalLinksBtn).should('exist')
-
-            //Check if the Global Links Button is visible
-            cy.get(identifiers.GlobalLinksBtn).should('be.visible')
-
-            //Click the Global Links Button
-            cy.get(identifiers.GlobalLinksBtn).click()
+            //Click Global Links Button
+            automation.click(identifiers.GlobalLinksBtn)
         })
     }
     clickGlobalLinks() {
@@ -78,14 +56,8 @@ class Homepage {
                 //Calls the Method to click the Global Links Button
                 this.clickGlobalLinksButton()
 
-                //Check if the Link for the specific country exists
-                cy.get(countries.countries[counter].button).should('exist')
-
-                //Check if the Link for the specific country is visible
-                cy.get(countries.countries[counter].button).should('be.visible')
-
-                //Click the Link for the specific country
-                cy.get(countries.countries[counter].button).click()
+                //Click Country Specific Link
+                automation.click(countries.countries[counter].button)
 
                 //Check if the new url is called
                 cy.url().should('include', countries.countries[counter].newUrl)
@@ -98,14 +70,8 @@ class Homepage {
     }
     clickContactUsButton() {
         cy.fixture('identifiers.json').then((identifiers)=>{
-            //Check if the Contact Us Button exists
-            cy.get(identifiers.ContactUsButton).should('exist')
-
-            //Check if the Contact Us Button is visible
-            cy.get(identifiers.ContactUsButton).should('be.visible')
-
             //Click the Contact Us Button
-            cy.get(identifiers.ContactUsButton).click()
+            automation.click(identifiers.ContactUsButton)
 
             //Check if the new url is called
             cy.url().should('include', 'contact-us')
