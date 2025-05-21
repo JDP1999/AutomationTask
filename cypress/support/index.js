@@ -17,6 +17,10 @@
 import './commands';
 import 'cypress-mochawesome-reporter/register';
 import "cypress-mailslurp";
+
+module.exports = (on, config) => {
+    require('cypress-mochawesome-reporter/plugin')(on);
+  };
 // pay attention to the "screenshot" constant because if you specify an incorrect file name mask, the screenshot will not be included in the report
 
 // Alternatively you can use CommonJS syntax:

@@ -13,7 +13,7 @@
   "scripts": {
     "cy:open" : "cypress open",
     "cy:smoke" : "cypress run --spec 'cypress\\e2e\\integration\\AutomationTask\\*.spec.cy.js' ",
-    "cy:test" : "cypress run --spec 'cypress\\e2e\\integration\\AutomationTask\\SecondAPITest.spec.cy.js' "
+    "cy:test" : "cypress run --spec 'cypress\\e2e\\integration\\AutomationTask\\CheckAutomationPage.spec.cy.js' "
   }
 
 }
