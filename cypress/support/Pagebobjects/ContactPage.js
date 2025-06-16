@@ -34,7 +34,7 @@ class ContactPage {
             automation.slide(identifiers.Slider)
 
             //Check Error Message displayed
-            cy.get('div[class="mf_form__errors"]').should('be.visible')
+            cy.get(identifiers.ErrorMessage).should('be.visible')
         })
     }
     checkCheckbox(){
