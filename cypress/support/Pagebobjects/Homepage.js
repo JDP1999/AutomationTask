@@ -62,8 +62,10 @@ class Homepage {
                 //Check if the new url is called
                 cy.url().should('include', countries.countries[counter].newUrl)
 
+                //Navigate back
                 cy.go("back")
 
+                //Check the current url
                 cy.url().should('include', 'https://www.sogeti.com/')
             }
         })

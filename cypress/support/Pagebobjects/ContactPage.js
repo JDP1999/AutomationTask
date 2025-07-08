@@ -11,26 +11,31 @@ class ContactPage {
     }
     enterLastname() {
         cy.fixture("identifiers.json").then((identifiers)=>{
+            //Type lastname into the textfield using the data from faker
             automation.sendText(identifiers.Lastname,faker.person.lastName())
         })
     }
     enterEmail() {
         cy.fixture("identifiers.json").then((identifiers)=>{
+            //Type email into the textfield using the data from faker
             automation.sendText(identifiers.Email,faker.internet.email())
         })
     }
     enterMobilenumber() {
         cy.fixture("identifiers.json").then((identifiers)=>{
+            //Type mobile into the textfield using the data from faker
             automation.sendText(identifiers.Mobile,faker.phone.number())
         })
     }
     enterMessage() {
         cy.fixture("identifiers.json").then((identifiers)=>{
+            //Type text into the textfield using the data from faker
             automation.sendText(identifiers.Message,faker.word.words(10))
         })
     }
     handleSlider(){
         cy.fixture("identifiers.json").then((identifiers)=>{
+            //Use the slider to submit the form
             automation.slide(identifiers.Slider)
 
             //Check Error Message displayed

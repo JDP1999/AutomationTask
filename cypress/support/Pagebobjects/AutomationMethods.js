@@ -1,48 +1,48 @@
 class AutomationMethods{
     click(element){
-        //Check if given element exists
+        //Check if the given element exists
         cy.get(element).should('exist')
 
-        //Scroll element into view
+        //Scroll the element into view
         cy.get(element).scrollIntoView()
 
-        //Check if given element is visible
+        //Check if the given element is visible
         cy.get(element).should('be.visible')
 
-        //Click given element
+        //Click the given element
         cy.get(element).click({ force: true })
     }
     hover(element){
-        //Check that the Services Button exists
+        //Check that the element exists
         cy.get(element).should('exist')
 
-        //Check that the Services Button is visible
+        //Check that the element is visible
         cy.get(element).should('be.visible')
 
-        //Hover over Services Button
+        //Hover over the element
         cy.get(element).realHover()
     }
     sendText(element,text){
-        //Check if element exists
+        //Check if the element exists
         cy.get(element).should('exist')
 
-        //Scroll element into view
+        //Scroll the element into view
         cy.get(element).scrollIntoView()
 
-        //Check if element is visible
+        //Check if the element is visible
         cy.get(element).should('be.visible')
 
-        //Write random data with faker
+        //Write text into the element
         cy.get(element).type(text, {force:true})
     }
     slide(element){
-        //Check if element exists
+        //Check if the element exists
         cy.get(element).should('exist')
 
-        //Scroll element into view
+        //Scroll the element into view
         cy.get(element).scrollIntoView()
 
-        //Check if element is visible
+        //Check if the element is visible
         cy.get(element).should('be.visible')
 
         //Slide to the left
