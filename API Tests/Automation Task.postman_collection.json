@@ -53,7 +53,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "https://api.zippopotam.us/de/bw/stuttgart"
+				"url": "{{Url4}}"
 			},
 			"response": []
 		},
