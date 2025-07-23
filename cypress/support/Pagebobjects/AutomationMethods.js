@@ -50,4 +50,4 @@ class AutomationMethods{
     }
 
 }
-export default AutomationMethods
+export const automationmethods = new AutomationMethods();

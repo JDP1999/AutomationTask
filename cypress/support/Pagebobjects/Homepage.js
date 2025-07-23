@@ -1,7 +1,6 @@
 import "cypress-real-events/support";
-import AutomationMethods from "./AutomationMethods";
-var is_active=false
-const automation = new AutomationMethods()
+import {automationmethods} from "./AutomationMethods";
+//var is_active=false
 
 class Homepage {
     loadHomepage() {
@@ -27,7 +26,7 @@ class Homepage {
     hoverServicesButton() {
         cy.fixture("identifiers.json").then((identifiers) => {
             //Hover over the Services Button
-            automation.hover(identifiers.ServicesBtn)
+            automationmethods.hover(identifiers.ServicesBtn)
 
             //Check Services Button hovered
             cy.get(identifiers.ServicesSubmenu).should('have.class', 't1-menu-li active')
@@ -36,7 +35,7 @@ class Homepage {
     clickServicesButton() {
         cy.fixture("identifiers.json").then((identifiers) => {
             //Click Services Button
-            automation.click(identifiers.ServicesBtn)
+            automationmethods.click(identifiers.ServicesBtn)
 
             //Check that the new url is called
             cy.url().should('contain', 'services')
@@ -46,7 +45,7 @@ class Homepage {
         //Check if the Global Links Button exists
         cy.fixture("identifiers.json").then((identifiers) =>{
             //Click Global Links Button
-            automation.click(identifiers.GlobalLinksBtn)
+            automationmethods.click(identifiers.GlobalLinksBtn)
         })
     }
     clickGlobalLinks() {
@@ -57,7 +56,7 @@ class Homepage {
                 this.clickGlobalLinksButton()
 
                 //Click Country Specific Link
-                automation.click(countries.countries[counter].button)
+                automationmethods.click(countries.countries[counter].button)
 
                 //Check if the new url is called
                 cy.url().should('include', countries.countries[counter].newUrl)
@@ -73,7 +72,7 @@ class Homepage {
     clickContactUsButton() {
         cy.fixture('identifiers.json').then((identifiers)=>{
             //Click the Contact Us Button
-            automation.click(identifiers.ContactUsButton)
+            automationmethods.click(identifiers.ContactUsButton)
 
             //Check if the new url is called
             cy.url().should('include', 'contact-us')
@@ -81,4 +80,4 @@ class Homepage {
     }
 
 }
-export default Homepage
+export const homepage = new Homepage();
