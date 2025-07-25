@@ -11,15 +11,16 @@ class Homepage {
         cy.url().should('include', 'https://www.sogeti.com/')
 
         //Spy an API Request that is called when the page is loaded
-        cy.intercept("https://www.sogeti.com/wp-content/themes/sogeti2024/public/dist/archive-filter-expands.build.js").as("load")
+        cy.intercept("https://www.sogeti.com/wp-content/themes/sogeti2024/public/dist/custom-class-tmap.build.js").as("load")
 
         //Wait for the request being send
-        cy.wait("@load",{ timeout:30000})
+       // cy.wait("@load",{ timeout:30000})
+       cy.wait(10000)
     }
     acceptCookies() {
         cy.fixture("identifiers.json").then((identifiers) => {
             //Click the Accpet Cookies Button
-            automation.click(identifiers.acceptCookies)
+            automationmethods.shadowclick(identifiers.acceptCookies)
         })
 
     }

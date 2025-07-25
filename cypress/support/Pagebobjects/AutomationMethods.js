@@ -12,6 +12,19 @@ class AutomationMethods{
         //Click the given element
         cy.get(element).click({ force: true })
     }
+    shadowclick(element){
+        //Check if the given element exists
+        cy.get('aside').shadow().find(element).should('exist')
+
+        //Scroll the element into view
+        cy.get('aside').shadow().find(element).scrollIntoView()
+
+        //Check if the given element is visible
+        cy.get('aside').shadow().find(element).should('be.visible')
+
+        //Click the given element
+        cy.get('aside').shadow().find(element).click({ force: true })
+    }
     hover(element){
         //Check that the element exists
         cy.get(element).should('exist')

@@ -1,5 +1,5 @@
 {
-    "acceptCookies":"button[id*='AllowAll']",
+    "acceptCookies":"button[id='accept']",
     "ServicesBtn":"nav[class='header-nav']>ul>li>a[href*='services']",
     "ServicesSubmenu":"nav[class='header-nav']>ul>li[class='t1-menu-li active']",
     "EndToEndSolutionsBtn":"a[aria-label='Explore about End-to-end Solutions']",
