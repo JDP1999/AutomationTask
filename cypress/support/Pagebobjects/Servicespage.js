@@ -1,13 +1,18 @@
 import {automationmethods} from "./AutomationMethods";
 class Servicespage {
-    clickEndtoEndSolutionsButton() {
-        cy.fixture("identifiers.json").then((identifiers) => {
-            //Click EndToEndSolutions
-            automationmethods.click(identifiers.EndToEndSolutionsBtn)
 
-            //Check that the new url is called
-            cy.url().should('contain', 'end-to-end-solutions')
-        })
+    //Selectors
+    constructor(){
+        this.EndToEndSolutionsBtn="a[aria-label='Explore about End-to-end Solutions']";
+    }
+
+    //Mathods
+    clickEndtoEndSolutionsButton() {
+        //Click EndToEndSolutions
+        automationmethods.click(this.EndToEndSolutionsBtn)
+
+        //Check that the new url is called
+        cy.url().should('contain', 'end-to-end-solutions')
     }
 
 }
