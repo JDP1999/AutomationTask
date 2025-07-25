@@ -1,8 +1,17 @@
 import "cypress-real-events/support";
-import {automationmethods} from "./AutomationMethods";
-//var is_active=false
+import { automationmethods } from "./AutomationMethods";
 
 class Homepage {
+    //Selectors
+    constructor() {
+        this.acceptCookiesBtn = "button[id='accept']";
+        this.ServicesBtn = "nav[class='header-nav']>ul>li>a[href*='services']";
+        this.ServicesSubmenu = "nav[class='header-nav']>ul>li[class='t1-menu-li active']";
+        this.GlobalLinksBtn = "span:has(> i[aria-label='Select Country Website'])";
+        this.ContactUsButton = "nav[class='header-nav']>ul>li>a[href*='contact-us']>span>span";
+    }
+
+    //Methods
     loadHomepage() {
         //Call the Sogeti Side
         cy.visit('/')
@@ -14,45 +23,38 @@ class Homepage {
         cy.intercept("https://www.sogeti.com/wp-content/themes/sogeti2024/public/dist/custom-class-tmap.build.js").as("load")
 
         //Wait for the request being send
-       // cy.wait("@load",{ timeout:30000})
-       cy.wait(10000)
+        // cy.wait("@load",{ timeout:30000})
+        cy.wait(10000)
     }
     acceptCookies() {
-        cy.fixture("identifiers.json").then((identifiers) => {
-            //Click the Accpet Cookies Button
-            automationmethods.shadowclick(identifiers.acceptCookies)
-        })
+        //Click the Accpet Cookies Button
+        automationmethods.click(this.acceptCookiesBtn);
 
     }
     hoverServicesButton() {
-        cy.fixture("identifiers.json").then((identifiers) => {
-            //Hover over the Services Button
-            automationmethods.hover(identifiers.ServicesBtn)
+        //Hover over the Services Button
+        automationmethods.hover(this.ServicesBtn)
 
-            //Check Services Button hovered
-            cy.get(identifiers.ServicesSubmenu).should('have.class', 't1-menu-li active')
-        })
+        //Check Services Button hovered
+        cy.get(this.ServicesSubmenu).should('have.class', 't1-menu-li active')
     }
     clickServicesButton() {
         cy.fixture("identifiers.json").then((identifiers) => {
             //Click Services Button
-            automationmethods.click(identifiers.ServicesBtn)
+            automationmethods.click(this.ServicesBtn)
 
             //Check that the new url is called
             cy.url().should('contain', 'services')
         })
     }
     clickGlobalLinksButton() {
-        //Check if the Global Links Button exists
-        cy.fixture("identifiers.json").then((identifiers) =>{
-            //Click Global Links Button
-            automationmethods.click(identifiers.GlobalLinksBtn)
-        })
+        //Click Global Links Button
+        automationmethods.click(this.GlobalLinksBtn)
     }
     clickGlobalLinks() {
-        var counter=0;
-        cy.fixture('countries.json').then((countries)=>{
-            for(counter in countries.countries){
+        var counter = 0;
+        cy.fixture('countries.json').then((countries) => {
+            for (counter in countries.countries) {
                 //Calls the Method to click the Global Links Button
                 this.clickGlobalLinksButton()
 
@@ -71,13 +73,11 @@ class Homepage {
         })
     }
     clickContactUsButton() {
-        cy.fixture('identifiers.json').then((identifiers)=>{
-            //Click the Contact Us Button
-            automationmethods.click(identifiers.ContactUsButton)
+        //Click the Contact Us Button
+        automationmethods.click(this.ContactUsButton)
 
-            //Check if the new url is called
-            cy.url().should('include', 'contact-us')
-        })
+        //Check if the new url is called
+        cy.url().should('include', 'contact-us')
     }
 
 }
