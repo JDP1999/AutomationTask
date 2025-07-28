@@ -8,13 +8,11 @@ class EndToEndSolutionsPage {
 
     //Methods
     clickAutomation() {
-        cy.fixture("identifiers.json").then((identifiers)=>{
-            //Click Automation
-            automationmethods.click(this.AutomationBtn)
+        //Click Automation
+        automationmethods.click(this.AutomationBtn)
 
-            //Check that the new URL is called
-            cy.url().should('contain', 'next-gen-workplace-automation')
-        })
+        //Check that the new URL is called
+        cy.url().should('contain', 'next-gen-workplace-automation')
     }
 
 }

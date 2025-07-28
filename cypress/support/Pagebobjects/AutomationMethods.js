@@ -20,7 +20,7 @@ class AutomationMethods{
         cy.get(element).should('be.visible')
 
         //Hover over the element
-        cy.get(element).realHover()
+        cy.get(element).trigger('mouseenter')
     }
     sendText(element,text){
         //Check if the element exists
@@ -46,7 +46,11 @@ class AutomationMethods{
         cy.get(element).should('be.visible')
 
         //Slide to the left
-        cy.get(element).realMouseDown().realMouseMove(280,0).realMouseUp()
+        cy.get(element).trigger('mousedown')
+
+        cy.get(element).trigger('mousemove',{clientX:1000,clientY:0})
+
+        cy.get(element).trigger('mouseup')
     }
 
 }

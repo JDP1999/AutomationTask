@@ -39,13 +39,11 @@ class Homepage {
         cy.get(this.ServicesSubmenu).should('have.class', 't1-menu-li active')
     }
     clickServicesButton() {
-        cy.fixture("identifiers.json").then((identifiers) => {
-            //Click Services Button
-            automationmethods.click(this.ServicesBtn)
+        //Click Services Button
+        automationmethods.click(this.ServicesBtn)
 
-            //Check that the new url is called
-            cy.url().should('contain', 'services')
-        })
+        //Check that the new url is called
+        cy.url().should('contain', 'services')
     }
     clickGlobalLinksButton() {
         //Click Global Links Button
