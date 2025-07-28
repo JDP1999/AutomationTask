@@ -3,7 +3,7 @@ class EndToEndSolutionsPage {
 
     //Selectors
     constructor(){
-        AutomationBtn="a[href*='automation']>div>span";
+        this.AutomationBtn="a[href*='automation']>div>span";
     }
 
     //Methods

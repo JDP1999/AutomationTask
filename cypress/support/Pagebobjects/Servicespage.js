@@ -3,7 +3,7 @@ class Servicespage {
 
     //Selectors
     constructor(){
-        this.EndToEndSolutionsBtn="a[aria-label='Explore about End-to-end Solutions']";
+        this.EndToEndSolutionsBtn=".sogeti-button";
     }
 
     //Mathods
