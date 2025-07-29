@@ -9,6 +9,7 @@ class Homepage {
         this.ServicesSubmenu = "nav[class='header-nav']>ul>li[class='t1-menu-li active']";
         this.GlobalLinksBtn = "span:has(> i[aria-label='Select Country Website'])";
         this.ContactUsButton = "nav[class='header-nav']>ul>li>a[href*='contact-us']>span>span";
+        this.SubMenuLink = "li[aria-label='Quality Engineering Submenu']"
     }
 
     //Methods
@@ -20,11 +21,11 @@ class Homepage {
         cy.url().should('include', 'https://www.sogeti.com/')
 
         //Spy an API Request that is called when the page is loaded
-        cy.intercept("https://www.sogeti.com/wp-content/themes/sogeti2024/public/dist/custom-class-tmap.build.js").as("load")
+        cy.intercept("https://www.sogeti.com/wp-content/uploads/sites/3/2024/10/cropped-favicon-1.webp?w=32").as("load")
 
         //Wait for the request being send
-        // cy.wait("@load",{ timeout:30000})
-        cy.wait(10000)
+        cy.get(this.SubMenuLink).should('exist')
+        //cy.wait(10000)
     }
     acceptCookies() {
         //Click the Accpet Cookies Button
