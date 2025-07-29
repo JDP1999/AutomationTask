@@ -1,14 +1,11 @@
 import "cypress-real-events/support";
 import { automationmethods } from "./AutomationMethods";
+import { globallinksbutton } from "../Pageelements/GlobalLinksButton";
 
 class Homepage {
     //Selectors
     constructor() {
-        this.acceptCookiesBtn = "button[id='accept']";
-        this.ServicesBtn = "nav[class='header-nav']>ul>li>a[href*='services']";
-        this.ServicesSubmenu = "nav[class='header-nav']>ul>li[class='t1-menu-li active']";
         this.GlobalLinksBtn = "span:has(> i[aria-label='Select Country Website'])";
-        this.ContactUsButton = "nav[class='header-nav']>ul>li>a[href*='contact-us']>span>span";
         this.SubMenuLink = "li[aria-label='Quality Engineering Submenu']"
     }
 
@@ -20,42 +17,15 @@ class Homepage {
         //Check if the Sogeti Side is called
         cy.url().should('include', 'https://www.sogeti.com/')
 
-        //Spy an API Request that is called when the page is loaded
-        cy.intercept("https://www.sogeti.com/wp-content/uploads/sites/3/2024/10/cropped-favicon-1.webp?w=32").as("load")
-
-        //Wait for the request being send
+        //Wait for the submenu to exist
         cy.get(this.SubMenuLink).should('exist')
-        //cy.wait(10000)
-    }
-    acceptCookies() {
-        //Click the Accpet Cookies Button
-        automationmethods.click(this.acceptCookiesBtn);
-
-    }
-    hoverServicesButton() {
-        //Hover over the Services Button
-        automationmethods.hover(this.ServicesBtn)
-
-        //Check Services Button hovered
-        cy.get(this.ServicesSubmenu).should('have.class', 't1-menu-li active')
-    }
-    clickServicesButton() {
-        //Click Services Button
-        automationmethods.click(this.ServicesBtn)
-
-        //Check that the new url is called
-        cy.url().should('contain', 'services')
-    }
-    clickGlobalLinksButton() {
-        //Click Global Links Button
-        automationmethods.click(this.GlobalLinksBtn)
     }
     clickGlobalLinks() {
         var counter = 0;
         cy.fixture('countries.json').then((countries) => {
             for (counter in countries.countries) {
                 //Calls the Method to click the Global Links Button
-                this.clickGlobalLinksButton()
+                globallinksbutton.clickGlobalLinksButton()
 
                 //Click Country Specific Link
                 automationmethods.click(countries.countries[counter].button)
@@ -70,13 +40,6 @@ class Homepage {
                 cy.url().should('include', 'https://www.sogeti.com/')
             }
         })
-    }
-    clickContactUsButton() {
-        //Click the Contact Us Button
-        automationmethods.click(this.ContactUsButton)
-
-        //Check if the new url is called
-        cy.url().should('include', 'contact-us')
     }
 
 }
