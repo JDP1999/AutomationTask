@@ -12,7 +12,7 @@ class Servicespage {
         automationmethods.click(this.EndToEndSolutionsBtn)
 
         //Check that the new url is called
-        cy.url().should('contain', 'end-to-end-solutions')
+        automationmethods.verifyPageLoaded('end-to-end-solutions')
     }
 
 }

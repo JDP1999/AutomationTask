@@ -5,6 +5,7 @@ import { contactusbutton } from "../../../support/Pageelements/ContactUsButton";
 describe('FillForm', () => {
     it('Fills the form', () => {
       automationmethods.loadPage('/')
+      automationmethods.verifyPageLoaded('/')
       cookiesDialog.acceptCookies();
       contactusbutton.clickContactUsButton();
       contactpage.enterFirstname();

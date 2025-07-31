@@ -3,7 +3,7 @@ class EndToEndSolutionsPage {
 
     //Selectors
     constructor(){
-        this.AutomationBtn="a[href*='automation']>div>span";
+        this.AutomationBtn=":nth-child(4) > a > .community-url > .title-list > .service-description";
     }
 
     //Methods
@@ -12,7 +12,7 @@ class EndToEndSolutionsPage {
         automationmethods.click(this.AutomationBtn)
 
         //Check that the new URL is called
-        cy.url().should('contain', 'next-gen-workplace-automation')
+        automationmethods.verifyPageLoaded('next-gen-workplace-automation')
     }
 
 }

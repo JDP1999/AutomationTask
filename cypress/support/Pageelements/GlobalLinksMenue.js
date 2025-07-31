@@ -21,13 +21,13 @@ class GlobalLinksMenue{
                     automationmethods.click(countries.countries[counter].button)
     
                     //Check if the new url is called
-                    cy.url().should('include', countries.countries[counter].newUrl)
+                    automationmethods.verifyPageLoaded(countries.countries[counter].newUrl)
     
                     //Navigate back
-                    cy.go("back")
+                    automationmethods.goBack()
     
                     //Check the current url
-                    cy.url().should('include', 'https://www.sogeti.com/')
+                    automationmethods.verifyPageLoaded('https://www.sogeti.com/')
                 }
             })
         }

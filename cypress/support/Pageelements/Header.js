@@ -20,7 +20,7 @@ class Header {
         automationmethods.click(this.ServicesBtn)
 
         //Check that the new url is called
-        cy.url().should('contain', 'services')
+        automationmethods.verifyPageLoaded('services')
     }
 }
 export const header = new Header()

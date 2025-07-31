@@ -7,6 +7,7 @@ class ContactUsButton {
 
     clickContactUsButton(){
         automationmethods.click(this.ContactUsButton)
+        automationmethods.verifyPageLoaded('contact-us')
     }
 }
 export const contactusbutton = new ContactUsButton()

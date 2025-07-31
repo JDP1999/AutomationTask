@@ -6,6 +6,7 @@ import {header} from '../../../support/Pageelements/Header'
 describe('CheckAutomationPage', () => {
   it('Clicks Links on the Sogeti side', () => {
     automationmethods.loadPage('/')
+    automationmethods.verifyPageLoaded('/')
     cookiesDialog.acceptCookies();
     header.hoverButton();
     header.clickServicesButton();

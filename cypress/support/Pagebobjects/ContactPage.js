@@ -16,6 +16,7 @@ class ContactPage {
     }
 
     //Methods
+
     enterFirstname() {
         //Type firstname into the textfield using the data from faker
         automationmethods.sendText(this.Firstname, faker.person.firstName())
