@@ -3,11 +3,14 @@ class EndToEndSolutionsPage {
 
     //Selectors
     constructor(){
-        this.AutomationBtn=":nth-child(4) > a > .community-url > .title-list > .service-description";
+        this.AutomationBtn="a[href='https://www.sogeti.com/end-to-end-solutions/next-gen-workplace-automation/']>div>span";
     }
 
     //Methods
     clickAutomation() {
+        //Scroll to the Bottom
+        automationmethods.scrollToBottom()
+
         //Click Automation
         automationmethods.click(this.AutomationBtn)
 

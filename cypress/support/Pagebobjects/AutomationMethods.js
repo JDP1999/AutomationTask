@@ -50,6 +50,10 @@ class AutomationMethods{
         cy.go("back")
     }
 
+    scrollToBottom(){
+        cy.scrollTo('bottom')
+    }
+
     prepareforAction(element){
         automationmethods.checkElementExists(element)
         automationmethods.checkElementVisible(element)
