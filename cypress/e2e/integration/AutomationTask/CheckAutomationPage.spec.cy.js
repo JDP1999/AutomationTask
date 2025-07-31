@@ -1,12 +1,11 @@
-import "cypress-real-events/support";
-import {homepage} from '../../../support/Pagebobjects/Homepage'
 import {servicespage} from '../../../support/Pagebobjects/Servicespage'
 import {endtoendsolutionspage} from '../../../support/Pagebobjects/EndToEndSolutionsPage'
+import { automationmethods } from "../../../support/Pagebobjects/AutomationMethods";
 import {cookiesDialog} from '../../../support/Pageelements/CookiesDialog'
 import {header} from '../../../support/Pageelements/Header'
 describe('CheckAutomationPage', () => {
   it('Clicks Links on the Sogeti side', () => {
-    homepage.loadHomepage();
+    automationmethods.loadPage('/')
     cookiesDialog.acceptCookies();
     header.hoverButton();
     header.clickServicesButton();

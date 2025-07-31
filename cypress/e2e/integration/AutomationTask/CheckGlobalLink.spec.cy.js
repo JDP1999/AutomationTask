@@ -1,9 +1,10 @@
-import {homepage} from '../../../support/Pagebobjects/Homepage'
+import { automationmethods } from '../../../support/Pagebobjects/AutomationMethods'
 import {cookiesDialog} from '../../../support/Pageelements/CookiesDialog'
+import { globallinksmenue } from '../../../support/Pageelements/GlobalLinksMenue'
 describe('CheckGlobalLink', () => {
     it('Asserts that the global links are working', () => {
-      homepage.loadHomepage();
+      automationmethods.loadPage('/')
       cookiesDialog.acceptCookies();
-      homepage.clickGlobalLinks();
+      globallinksmenue.clickGlobalLinks();
     })
   })

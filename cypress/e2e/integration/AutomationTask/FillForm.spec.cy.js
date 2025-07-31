@@ -1,11 +1,10 @@
-import "cypress-real-events/support";
-import {homepage} from '../../../support/Pagebobjects/Homepage'
 import {contactpage} from '../../../support/Pagebobjects/ContactPage'
+import { automationmethods } from "../../../support/Pagebobjects/AutomationMethods";
 import {cookiesDialog} from '../../../support/Pageelements/CookiesDialog'
 import { contactusbutton } from "../../../support/Pageelements/ContactUsButton";
 describe('FillForm', () => {
     it('Fills the form', () => {
-      homepage.loadHomepage();
+      automationmethods.loadPage('/')
       cookiesDialog.acceptCookies();
       contactusbutton.clickContactUsButton();
       contactpage.enterFirstname();

@@ -52,6 +52,16 @@ class AutomationMethods{
 
         cy.get(element).trigger('mouseup')
     }
+    loadPage(url){
+        //Call the Sogeti Side
+        cy.visit(url)
+
+        //Check if the Sogeti Side is called
+        cy.url().should('include', 'https://www.sogeti.com/')
+
+        //Wait for the page to be loaded
+        cy.wait(8000)
+    }
 
 }
 export const automationmethods = new AutomationMethods();

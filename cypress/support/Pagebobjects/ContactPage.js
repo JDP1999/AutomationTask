@@ -1,4 +1,3 @@
-import "cypress-real-events/support";
 import { fakerDE as faker } from '@faker-js/faker';
 import {automationmethods} from "./AutomationMethods"
 

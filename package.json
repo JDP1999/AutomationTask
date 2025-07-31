@@ -15,7 +15,7 @@
     "cy:smoke" : "cypress run --spec 'cypress\\e2e\\integration\\AutomationTask\\*.spec.cy.js' ",
     "cy:testform" : "cypress run --spec 'cypress\\e2e\\integration\\AutomationTask\\FillForm.spec.cy.js' ",
     "cy:testautomation":"cypress run --spec 'cypress\\e2e\\integration\\AutomationTask\\CheckAutomationPage.spec.cy.js' ",
-    "cy:testlinks":"cypress run --spec 'cypress\\e2e\\integration\\AutomationTask\\CheckGlobalLinks.spec.cy.js' "
+    "cy:testlinks":"cypress run --spec 'cypress\\e2e\\integration\\AutomationTask\\CheckGlobalLink.spec.cy.js' "
   }
 
 }
