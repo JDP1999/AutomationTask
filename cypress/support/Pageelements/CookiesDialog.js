@@ -5,6 +5,7 @@ class CookiesDialog {
         this.acceptCookiesBtn="button[id='accept']";
     }
 
+    //Actions
     acceptCookies(){
         automationmethods.click(this.acceptCookiesBtn)
     }

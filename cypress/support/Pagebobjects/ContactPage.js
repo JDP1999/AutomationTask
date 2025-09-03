@@ -17,6 +17,7 @@ class ContactPage {
 
     //Methods
 
+    //Actions
     enterFirstname() {
         //Type firstname into the textfield using the data from faker
         automationmethods.sendText(this.Firstname, faker.person.firstName())
@@ -43,20 +44,27 @@ class ContactPage {
         //Use the slider to submit the form
         automationmethods.slide(this.Slider)
 
-        //Check Error Message displayed
-        cy.get(this.ErrorMessage).should('be.visible')
-
     }
     checkCheckbox() {
-        //Check if checkbox is unchecked
-        cy.get(this.Checkbox).should('not.have.attr', 'data-gtm-form-interact-field-id')
-
         //Click Checkbox
         automationmethods.click(this.Checkbox)
+    }
 
+
+    //Verifications
+    verifyErrorMessageDisplayed(){
+        //Check Error Message displayed
+        cy.get(this.ErrorMessage).should('be.visible')
+    }
+
+    verifyCheckboxUnchecked(){
+        //Check if checkbox is unchecked
+        cy.get(this.Checkbox).should('not.have.attr', 'data-gtm-form-interact-field-id')
+    }
+
+    verifyCheckboxChecked(){
         //Check if checkbox is checked
         cy.get(this.Checkbox).should('have.attr', 'data-gtm-form-interact-field-id')
-
     }
 
 }
