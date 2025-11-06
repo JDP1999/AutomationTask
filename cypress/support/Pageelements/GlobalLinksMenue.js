@@ -14,20 +14,38 @@ class GlobalLinksMenue{
             var counter = 0;
             cy.fixture('countries.json').then((countries) => {
                 for (counter in countries.countries) {
-                    //Calls the Method to click the Global Links Button
-                    globallinksmenue.clickGlobalLinksButton()
-    
-                    //Click Country Specific Link
-                    automationmethods.click(countries.countries[counter].button)
-    
-                    //Check if the new url is called
-                    automationmethods.verifyPageLoaded(countries.countries[counter].newUrl)
-    
-                    //Navigate back
-                    automationmethods.goBack()
-    
-                    //Check the current url
-                    automationmethods.verifyPageLoaded('https://www.sogeti.com/')
+                    if (counter <= 12) {
+                        //Calls the Method to click the Global Links Button
+                        globallinksmenue.clickGlobalLinksButton()
+
+                        //Click Country Specific Link
+                        automationmethods.click(countries.countries[counter].button)
+
+                        //Check if the new url is called
+                        automationmethods.verifyPageLoaded('https://www.sogeti.' + countries.countries[counter].domain + '/')
+
+                        //Navigate back
+                        automationmethods.goBack()
+
+                        //Check the current url
+                        automationmethods.verifyPageLoaded('https://www.sogeti.' + countries.countries[0].domain + '/')
+                    }
+                    else {
+                        //Calls the Method to click the Global Links Button
+                        globallinksmenue.clickGlobalLinksButton()
+
+                        //Click Country Specific Link
+                        automationmethods.click(countries.countries[counter].button)
+
+                        //Check if the new url is called
+                        automationmethods.verifyPageLoaded('https://www.' + countries.countries[counter].domain + '.sogeti.com/')
+
+                        //Navigate back
+                        automationmethods.goBack()
+
+                        //Check the current url
+                        automationmethods.verifyPageLoaded('https://www.sogeti.' + countries.countries[0].domain + '/')
+                    }
                 }
             })
         }
