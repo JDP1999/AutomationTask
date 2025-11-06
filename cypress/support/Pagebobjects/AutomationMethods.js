@@ -3,7 +3,7 @@ class AutomationMethods{
     //Action
     scrollElementIntoView(element){
         //Scroll the element into view
-        cy.get(element).scrollIntoView()
+        cy.get(element).first().scrollIntoView()
     }
 
     click(element){
@@ -11,6 +11,13 @@ class AutomationMethods{
         automationmethods.prepareforAction(element)
         //Click the given element
         cy.get(element).click({ force: true })
+    }
+
+    firstclick(element){
+        //Prepare for interaction with element
+        automationmethods.prepareforAction(element)
+        //Click the given element
+        cy.get(element).first().click({ force: true })
     }
 
     hover(element){
@@ -63,12 +70,12 @@ class AutomationMethods{
     //Verification
     checkElementExists(element){
         //Check if the given element exists
-        cy.get(element).should('exist')
+        cy.get(element).first().should('exist')
     }
 
     checkElementVisible(element){
         //Check if the given element is visible
-        cy.get(element).should('be.visible')
+        cy.get(element).first().should('be.visible')
     }
     verifyPageLoaded(url){
         //Check if the Sogeti Side is called

@@ -14,12 +14,12 @@ class GlobalLinksMenue{
             var counter = 0;
             cy.fixture('countries.json').then((countries) => {
                 for (counter in countries.countries) {
-                    if (counter <= 12) {
+                    if (counter <= 11) {
                         //Calls the Method to click the Global Links Button
                         globallinksmenue.clickGlobalLinksButton()
 
                         //Click Country Specific Link
-                        automationmethods.click(countries.countries[counter].button)
+                        automationmethods.firstclick("ul[id='menu-location-menu']>li>a[href*='"+countries.countries[counter].domain+"']")
 
                         //Check if the new url is called
                         automationmethods.verifyPageLoaded('https://www.sogeti.' + countries.countries[counter].domain + '/')
@@ -35,7 +35,7 @@ class GlobalLinksMenue{
                         globallinksmenue.clickGlobalLinksButton()
 
                         //Click Country Specific Link
-                        automationmethods.click(countries.countries[counter].button)
+                        automationmethods.firstclick("ul[id='menu-location-menu']>li>a[href*='"+countries.countries[counter].domain+"']")
 
                         //Check if the new url is called
                         automationmethods.verifyPageLoaded('https://www.' + countries.countries[counter].domain + '.sogeti.com/')

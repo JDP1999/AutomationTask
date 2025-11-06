@@ -1,55 +1,42 @@
 {
     "countries": [
         {
-            "button": "ul[id='menu-location-menu']>li>a[href*='www.sogeti.com']",
             "domain": "com"
         },
         {
-            "button": "ul[id='menu-location-menu']>li>a[href*='www.sogeti.be']",
             "domain": "be"
         },
         {
-            "button": "ul[id='menu-location-menu']>li>a[href*='www.sogeti.fi']",
             "domain": "fi"
         },
         {
-            "button": "ul[id='menu-location-menu']>li>a[href*='www.us.sogeti.com']",
             "domain": "us"
         },
         {
-            "button": "ul[id='menu-location-menu']>li>a[href*='www.sogeti.de']",
             "domain": "de"
         },
         {
-            "button": "ul[id='menu-location-menu']>li>a[href*='www.sogeti.ie']",
             "domain": "ie"
         },
         {
-            "button": "ul[id='menu-location-menu']>li>a[href*='www.sogeti.lu']",
             "domain": "lu"
         },
         {
-            "button": "ul[id='menu-location-menu']>li>a[href*='www.sogeti.no']",
             "domain": "no"
         },
         {
-            "button": "ul[id='menu-location-menu']>li>a[href*='www.sogeti.nl']",
             "domain": "nl"
         },
         {
-            "button": "ul[id='menu-location-menu']>li>a[href*='www.sogeti.es']",
             "domain": "es"
         },
         {
-            "button": "ul[id='menu-location-menu']>li>a[href*='www.sogeti.se']",
             "domain": "se"
         },
         {
-            "button": "ul[id='menu-location-menu']>li>a[href*='www.uk.sogeti.com']",
             "domain": "uk"
         },
         {
-             "button": "ul[id='menu-location-menu']>li>a[href*='www.fr.sogeti.com']",
              "domain": "fr"
         }
     ]
