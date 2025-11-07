@@ -48,9 +48,6 @@ class AutomationMethods{
     loadPage(url){
         //Call the Sogeti Side
         cy.visit(url)
-
-        //Wait for the page to be loaded
-        cy.wait(8000)
     }
 
     goBack(){
