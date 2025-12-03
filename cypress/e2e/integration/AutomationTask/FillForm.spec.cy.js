@@ -3,10 +3,12 @@ import { automationmethods } from "../../../support/Pagebobjects/AutomationMetho
 import { cookiesDialog } from '../../../support/Pageelements/CookiesDialog'
 import { contactusbutton } from "../../../support/Pageelements/ContactUsButton";
 import { redirectbutton } from '../../../support/Pageelements/RedirectButton';
+import { popupdialog } from '../../../support/Pageelements/PopupDialog';
 describe('FillForm', () => {
     it('Fills the form', () => {
       automationmethods.loadPage('/')
       automationmethods.verifyPageLoaded('/')
+      popupdialog.clickCloseButton();
       redirectbutton.clickRedirectButton();
       cookiesDialog.acceptCookies();
       contactusbutton.clickContactUsButton();

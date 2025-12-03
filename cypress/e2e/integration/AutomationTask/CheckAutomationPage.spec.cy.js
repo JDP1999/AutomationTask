@@ -4,11 +4,13 @@ import { automationmethods } from "../../../support/Pagebobjects/AutomationMetho
 import { cookiesDialog } from '../../../support/Pageelements/CookiesDialog'
 import { header } from '../../../support/Pageelements/Header'
 import { redirectbutton } from '../../../support/Pageelements/RedirectButton';
+import { popupdialog } from '../../../support/Pageelements/PopupDialog';
 
 describe('CheckAutomationPage', () => {
   it('Clicks Links on the Sogeti side', () => {
     automationmethods.loadPage('/')
     automationmethods.verifyPageLoaded('/')
+    popupdialog.clickCloseButton();
     redirectbutton.clickRedirectButton();
     cookiesDialog.acceptCookies();
     header.hoverButton();
