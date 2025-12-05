@@ -1,5 +1,4 @@
 import { automationmethods } from '../../../support/Pagebobjects/AutomationMethods'
-import { cookiesDialog } from '../../../support/Pageelements/CookiesDialog'
 import { globallinksmenue } from '../../../support/Pageelements/GlobalLinksMenue'
 import { redirectbutton } from '../../../support/Pageelements/RedirectButton'
 import { popupdialog } from '../../../support/Pageelements/PopupDialog'
@@ -9,7 +8,6 @@ describe('CheckGlobalLink', () => {
       automationmethods.verifyPageLoaded('/')
       popupdialog.clickCloseButton();
       redirectbutton.clickRedirectButton();
-      cookiesDialog.acceptCookies();
       globallinksmenue.clickGlobalLinks();
     })
   })

@@ -7,7 +7,7 @@ class PopupDialog{
 
     //Actions
     clickCloseButton(){
-        automationmethods.click(this.PopupDialog)
+        automationmethods.clickIfElementPresent(this.PopupDialog)
     }
 }
 export const popupdialog = new PopupDialog()

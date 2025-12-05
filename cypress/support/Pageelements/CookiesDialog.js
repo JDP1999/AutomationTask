@@ -7,7 +7,7 @@ class CookiesDialog {
 
     //Actions
     acceptCookies(){
-        automationmethods.click(this.acceptCookiesBtn)
+        automationmethods.clickIfElementPresent(this.acceptCookiesBtn)
     }
 
 }

@@ -78,6 +78,13 @@ class AutomationMethods{
         //Check if the Sogeti Side is called
         cy.url().should('include', url)
     }
+    clickIfElementPresent(element){
+        cy.get('body').then((body)=>{
+            if(body.find(element).length>0){
+                automationmethods.click(element)
+            }
+        })
+    }
 
 }
 export const automationmethods = new AutomationMethods();

@@ -7,7 +7,7 @@ class RedirectButton{
 
     //Actions
     clickRedirectButton(){
-        automationmethods.click(this.RedirectButton)
+        automationmethods.clickIfElementPresent(this.RedirectButton)
     }
 }
 export const redirectbutton = new RedirectButton()
